@@ -145,3 +145,14 @@ class JobService():
             jobDao.close()
 
         return result
+
+    def getAllTypeAndCity(self,search):
+        jobDao = JobDao()
+        try:
+            result1,result2 = jobDao.getAllTypeAndCity(search)
+            type = [i['jobType'] for i in result1]
+            city = [i['jobCity'] for i in result2]
+        finally:
+            jobDao.close()
+
+        return type,city

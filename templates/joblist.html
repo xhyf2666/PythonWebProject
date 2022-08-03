@@ -18,8 +18,20 @@
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
+
+        function addjobTypeSelectItem(type) {
+            $('#jobTypeSelect').append('<option value="'+type+'">'+type+'</option>')
+
+        }
+
+        function addjobCitySelectItem(city) {
+            $('#jobCitySelect').append('<option value="'+city+'">'+city+'</option>')
+
+        }
+
         function changePage(opr,currentPage,pageSize,totalPage) {
             if (opr=="first"){
                 if (currentPage==1)
@@ -142,6 +154,15 @@
 
 <body>
 
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metismenu.min.js"></script>
+    <script src="/static/assets/js/waves.js"></script>
+    <script src="/static/assets/js/simplebar.min.js"></script>
+    <script src="/static/assets/js/echarts.min.js"></script>
+    <script src="/static/assets/js/bootstrap-select.min.js"></script>
+
     <!-- Begin page -->
     <div id="layout-wrapper">
 
@@ -186,11 +207,19 @@
                                             <input type="hidden" name="pageSize" value="{{ page.pageSize }}"/>
                                             <input type="hidden" name="opr" />
                                             <input type="hidden" name="jobID" />
+                                            <select class="selectpicker" multiple title="工作类型" id="jobTypeSelect" name="jobTypeSelect">
+                                            </select>
+                                            <select class="selectpicker" multiple title="城市" id="jobCitySelect" name="jobCitySelect">
+                                            </select>
+                                            <input type="number" placeholder="最低薪资" name="searchLowSalary" value="{{ search.searchLowSalary }}">
+                                            <input type="number" placeholder="最高薪资" name="searchHighSalary" value="{{ search.searchHighSalary }}">
                                             <button type="submit" class="btn-dark">查询</button>&nbsp;
                                             <button type="button" class="btn-info" data-toggle="modal" data-target="#addModal">添加</button>&nbsp;
+                                            <div>
                                             <button type="button" class="btn btn-primary" onclick="scrapy()">采集职位详情</button>&nbsp;
                                             <button type="button" class="btn btn-primary" onclick="similarJob()">职位相似度分析</button>&nbsp;
                                             <span id="progressInfo"></span>
+                                            </div>
                                         </form>
                                     </p>
 
@@ -215,6 +244,30 @@
                                                     <button onclick="updateJob({{ job.jobID }},'{{ job.jobName }}','{{ job.jobCompany}}','{{ job.jobCity }}',{{ job.jobHighSalary }},{{ job.jobLowSalary }})" data-toggle="modal" data-target="#updateModal" class="btn-confirm">修改</button>
                                                 </td>
                                             </tr>
+                                        {% endfor %}
+                                        <script>
+                                            addjobTypeSelectItem('全部')
+                                            addjobCitySelectItem('全部')
+                                        </script>
+                                        {% for type in page.allType %}
+                                            <script>
+                                                addjobTypeSelectItem('{{ type }}')
+                                            </script>
+                                        {% endfor %}
+                                        {% for city in page.allCity %}
+                                            <script>
+                                                addjobCitySelectItem('{{ city }}')
+                                            </script>
+                                        {% endfor %}
+                                        {% for type in page.selectType %}
+                                            <script>
+                                                $('#jobTypeSelect').selectpicker('val','{{ type }}')
+                                            </script>
+                                        {% endfor %}
+                                        {% for city in page.selectCity %}
+                                            <script>
+                                                $('#jobCitySelect').selectpicker('val','{{ city }}')
+                                            </script>
                                         {% endfor %}
                                          </tbody>
                                          <tfoot>
@@ -251,13 +304,7 @@
     <!-- Overlay-->
     <div class="menu-overlay"></div>
 
-    <!-- jQuery  -->
-    <script src="/static/assets/js/jquery.min.js"></script>
-    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/js/metismenu.min.js"></script>
-    <script src="/static/assets/js/waves.js"></script>
-    <script src="/static/assets/js/simplebar.min.js"></script>
-    <script src="/static/assets/js/echarts.min.js"></script>
+
 
     <!-- Morris Js-->
     <script src="../plugins/morris-js/morris.min.js"></script>

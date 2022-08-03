@@ -44,10 +44,33 @@ def joblist():
     currentPage=1 if not currentPage else int(currentPage)
     pageSize=10 if not pageSize else int(pageSize)
     startRow=(currentPage-1)*pageSize
+    page={"currentPage":currentPage,"pageSize":pageSize,"startRow":startRow}
+
     search={}
     if searchName:
         search={"jobName":searchName}
-    page={"currentPage":currentPage,"pageSize":pageSize,"startRow":startRow}
+    searchType=request.form.getlist("jobTypeSelect")
+    searchCity = request.form.getlist("jobCitySelect")
+    searchLowSalary=request.form.get("searchLowSalary")
+    searchHighSalary = request.form.get("searchHighSalary")
+    if searchType:
+        if "全部" in searchType:
+            searchType=None
+        else:
+            search["jobType"]=searchType
+            page["selectType"]=searchType
+    if searchCity:
+        if "全部" in searchCity:
+            searchCity=None
+        else:
+            search["jobCity"]=searchCity
+            page["selectCity"] = searchCity
+    if searchLowSalary:
+        search["searchLowSalary"]=searchLowSalary
+        page["searchLowSalary"] = searchLowSalary
+    if searchHighSalary:
+        search["searchHighSalary"]=searchHighSalary
+        page["searchHighSalary"] = searchHighSalary
     jobService=JobService()
     result=0
     if opr and opr=="del":
@@ -73,10 +96,13 @@ def joblist():
         result =jobService.addJob(data)
 
     pageList,count=jobService.getJobPageList(search,page)
+    allType,allCity=jobService.getAllTypeAndCity(search)
     page['pageList']=pageList
     page['count']=count
     totalPage=(count//pageSize+(1 if count%pageSize else 0))
     page['totalPage']=totalPage
+    page['allType']=allType
+    page['allCity']=allCity
     return render_template("joblist.html",page=page,search=search,result=result)
 
 import requests

@@ -46,6 +46,24 @@ class JobDao(BaseDao):
         if search.get("jobName"):
             sql += " and jobName like %s "
             params.append("%" + search.get("jobName") + "%")
+        if search.get("jobType"):
+            sql+=" and ("
+            for type in search.get("jobType"):
+                sql+=" jobType=%s or"
+                params.append(type)
+            sql=sql[:-2]+") "
+        if search.get("jobCity"):
+            sql+=" and ("
+            for city in search.get("jobCity"):
+                sql+=" jobCity=%s or"
+                params.append(city)
+            sql=sql[:-2]+") "
+        if search.get("searchLowSalary"):
+            sql+=" and jobLowSalary >= %s"
+            params.append(search.get("searchLowSalary"))
+        if search.get("searchHighSalary"):
+            sql += " and jobHighSalary <= %s"
+            params.append(search.get("searchHighSalary"))
         sql+=" limit %s,%s"
         params.append(page.get("startRow"))
         params.append(page.get("pageSize"))
@@ -59,6 +77,24 @@ class JobDao(BaseDao):
         if search.get("jobName"):
             sql+=" and jobName like %s "
             params.append("%"+search.get("jobName")+"%")
+        if search.get("jobType"):
+            sql+=" and ("
+            for type in search.get("jobType"):
+                sql+=" jobType=%s or"
+                params.append(type)
+            sql=sql[:-2]+") "
+        if search.get("jobCity"):
+            sql+=" and ("
+            for city in search.get("jobCity"):
+                sql+=" jobCity=%s or"
+                params.append(city)
+            sql=sql[:-2]+") "
+        if search.get("searchLowSalary"):
+            sql+=" and jobLowSalary >= %s"
+            params.append(search.get("searchLowSalary"))
+        if search.get("searchHighSalary"):
+            sql += " and jobHighSalary <= %s"
+            params.append(search.get("searchHighSalary"))
         self.execute(sql,params)
         return self.fetchone()
 
@@ -133,3 +169,38 @@ class JobDao(BaseDao):
         result=self.fetchone()
         self.commit()
         return result
+
+    def getAllTypeAndCity(self,search):
+        sql1 = "select DISTINCT jobType from t_job_data where 1=1"
+        sql2 = "select DISTINCT jobCity from t_job_data where 1=1"
+        params = []
+        if search.get("jobName"):
+            sql1 += " and jobName like %s "
+            sql2 += " and jobName like %s "
+            params.append("%" + search.get("jobName") + "%")
+        tmp=""
+        if search.get("jobType"):
+            tmp+=" and ("
+            for type in search.get("jobType"):
+                tmp+=" jobType=%s or"
+                params.append(type)
+            tmp=tmp[:-2]+") "
+        if search.get("jobCity"):
+            tmp+=" and ("
+            for city in search.get("jobCity"):
+                tmp+=" jobCity=%s or"
+                params.append(city)
+            tmp=tmp[:-2]+") "
+        if search.get("searchLowSalary"):
+            tmp+=" and jobLowSalary >= %s"
+            params.append(search.get("searchLowSalary"))
+        if search.get("searchHighSalary"):
+            tmp += " and jobHighSalary <= %s"
+            params.append(search.get("searchHighSalary"))
+        sql1+=tmp
+        sql2+=tmp
+        self.execute(sql1, params)
+        types=self.fetchall()
+        self.execute(sql2,params)
+        cities=self.fetchall()
+        return types,cities
