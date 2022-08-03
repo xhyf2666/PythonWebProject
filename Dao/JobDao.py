@@ -34,6 +34,12 @@ class JobDao(BaseDao):
         return self.fetchall()
         pass
 
+    def getTopSalaryJobs(self):
+
+        sql = "select * from t_job_data order by jobAverageSalary desc limit 4"
+        self.execute(sql)
+        return self.fetchall()
+
     def getJobPageList(self,search={},page={}):
         sql="select * from t_job_data where 1=1"
         params=[]

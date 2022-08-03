@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,request,session
 from service.UserService import UserService
+from service.JobService import JobService
 from controller.UserController import userController
 from controller.JobController import jobController
 app = Flask(__name__)
@@ -20,7 +21,9 @@ def login():
         user=userService.getUserByUserName(userName)
         if user and user['password']==password:
             session["user"]=user
-            return render_template('main.html', userName=userName)
+            jobService=JobService()
+            jobData=jobService.getTopSalaryJobs()
+            return render_template('main.html', userName=userName,jobData=jobData)
         else:
             return render_template('index.html', message="密码错误")
     except Exception as e:
@@ -30,13 +33,16 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop('user')
+    session.pop('jobData')
     session.clear()
     return render_template("index.html")
     pass
 
 @app.route("/main")
 def toMain():
-    return render_template("main.html")
+    jobService=JobService()
+    jobData=jobService.getTopSalaryJobs()
+    return render_template("main.html",jobData=jobData)
     pass
 
 @app.route("/test")

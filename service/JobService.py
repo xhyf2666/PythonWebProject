@@ -1,11 +1,12 @@
-from Dao.JobDao import  JobDao
+from Dao.JobDao import JobDao
+
 
 class JobService():
 
     def getJobSalaryByJobType(self):
-        jobDao=JobDao()
+        jobDao = JobDao()
         try:
-            data=jobDao.getJobSalaryStaticsByJobType()
+            data = jobDao.getJobSalaryStaticsByJobType()
         finally:
             jobDao.close()
         return data
@@ -34,57 +35,64 @@ class JobService():
             jobDao.close()
         return data
 
-    def getJobPageList(self,search,page):
+    def getJobPageList(self, search, page):
         jobDao = JobDao()
         try:
-            pageList=jobDao.getJobPageList(search,page)
-            count=jobDao.getTotalCount(search)['counts']
+            pageList = jobDao.getJobPageList(search, page)
+            count = jobDao.getTotalCount(search)['counts']
         finally:
             jobDao.close()
 
-        return pageList,count
+        return pageList, count
 
-
-    def updateJob(self,data):
+    def getTopSalaryJobs(self):
         jobDao = JobDao()
         try:
-            result=jobDao.updateJob(data)
+            data = jobDao.getTopSalaryJobs()
         finally:
             jobDao.close()
+        return data
 
-        return result
-
-    def updateJobDetail(self,data):
+    def updateJob(self, data):
         jobDao = JobDao()
         try:
-            result=jobDao.updateJobDetail(data)
-        finally:
-            jobDao.close()
-
-        return result
-
-    def removeJob(self,jobID):
-        jobDao = JobDao()
-        try:
-            result=jobDao.removeJob(jobID)
+            result = jobDao.updateJob(data)
         finally:
             jobDao.close()
 
         return result
 
-    def addJob(self,data):
+    def updateJobDetail(self, data):
         jobDao = JobDao()
         try:
-            result=jobDao.addJob(data)
+            result = jobDao.updateJobDetail(data)
         finally:
             jobDao.close()
 
         return result
 
-    def addSimilarJob(self,data):
+    def removeJob(self, jobID):
         jobDao = JobDao()
         try:
-            result=jobDao.addSimilarJob(data)
+            result = jobDao.removeJob(jobID)
+        finally:
+            jobDao.close()
+
+        return result
+
+    def addJob(self, data):
+        jobDao = JobDao()
+        try:
+            result = jobDao.addJob(data)
+        finally:
+            jobDao.close()
+
+        return result
+
+    def addSimilarJob(self, data):
+        jobDao = JobDao()
+        try:
+            result = jobDao.addSimilarJob(data)
         finally:
             jobDao.close()
 
@@ -93,7 +101,7 @@ class JobService():
     def getAllJobList(self):
         jobDao = JobDao()
         try:
-            result=jobDao.getAllJobList()
+            result = jobDao.getAllJobList()
         finally:
             jobDao.close()
 
@@ -108,12 +116,13 @@ class JobService():
 
         return job, sjobList
         pass
+
     pass
 
-    def updateJobStatus(self,data):
+    def updateJobStatus(self, data):
         jobDao = JobDao()
         try:
-            result=jobDao.updateJobStatus(data)
+            result = jobDao.updateJobStatus(data)
         finally:
             jobDao.close()
 
@@ -122,16 +131,16 @@ class JobService():
     def getCount(self):
         jobDao = JobDao()
         try:
-            result=jobDao.getCount()['counts']
+            result = jobDao.getCount()['counts']
         finally:
             jobDao.close()
 
         return result
 
-    def getJobStatus(self,statusName):
+    def getJobStatus(self, statusName):
         jobDao = JobDao()
         try:
-            result=jobDao.getJobStatus(statusName)
+            result = jobDao.getJobStatus(statusName)
         finally:
             jobDao.close()
 
