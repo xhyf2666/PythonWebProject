@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Opatix - Admin & Dashboard Template</title>
+    <title>行业职位信息分析平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -41,12 +41,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">Dashboard</h4>
+                                <h4 class="mb-0 font-size-18">行业职位信息分析平台</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Opatix</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">系统平台</a></li>
+                                        <li class="breadcrumb-item active">首页</li>
                                     </ol>
                                 </div>
 
@@ -56,66 +56,69 @@
                     <!-- end page title -->
 
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="avatar-sm float-right">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="avatar-sm float-right">
                                         <span class="avatar-title bg-soft-primary rounded-circle">
-                                            <i class="bx bx-layer m-0 h3 text-primary"></i>
+                                            {{jobData[0]['jobType']}}
                                         </span>
-                                    </div>
-                                    <h6 class="text-muted text-uppercase mt-0">Project Income</h6>
-                                    <h3 class="my-3">$4,514</h3>
-                                    <span class="badge badge-soft-primary mr-1"> +11% </span> <span class="text-muted">From previous period</span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="avatar-sm float-right">
-                                        <span class="avatar-title bg-soft-primary rounded-circle">
-                                            <i class="bx bx-dollar-circle m-0 h3 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <h6 class="text-muted text-uppercase mt-0">Net Revenue</h6>
-                                    <h3 class="my-3">$85,365</h3>
-                                    <span class="badge badge-soft-primary mr-1"> -29% </span> <span class="text-muted">This Month</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="avatar-sm float-right">
-                                        <span class="avatar-title bg-soft-primary rounded-circle">
-                                            <i class="bx bx-analyse m-0 h3 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <h6 class="text-muted text-uppercase mt-0">New Leads</h6>
-                                    <h3 class="my-3">$<span data-plugin="counterup">9.94</span></h3>
-                                    <span class="badge badge-soft-primary mr-1"> 0% </span> <span class="text-muted">This Month</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="avatar-sm float-right">
-                                        <span class="avatar-title bg-soft-primary rounded-circle">
-                                            <i class="bx bx-basket m-0 h3 text-primary"></i>
-                                        </span>
-                                    </div>
-                                    <h6 class="text-muted text-uppercase mt-0">Quoted </h6>
-                                    <h3 class="my-3" data-plugin="counterup">5,842</h3>
-                                    <span class="badge badge-soft-primary mr-1"> +89% </span> <span class="text-muted">This Month</span>
-                                </div>
+                                <h6 class="text-muted text-uppercase mt-0">{{ jobData[0]['jobName'] }}</h6>
+                                <h3 class="my-3">{{jobData[0]['jobSalary']}}</h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[0]['jobCity'] }} </span><span class="text-muted">{{ jobData[0]['jobCompany'] }}</span>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="avatar-sm float-right">
+                                        <span class="avatar-title bg-soft-primary rounded-circle">
+                                            {{jobData[1]['jobType']}}
+                                        </span>
+                                </div>
+                                <h6 class="text-muted text-uppercase mt-0">{{ jobData[1]['jobName'] }}</h6>
+                                <h3 class="my-3">{{ jobData[1]['jobSalary'] }}</h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[1]['jobCity'] }} </span><span class="text-muted">{{ jobData[1]['jobCompany']}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="avatar-sm float-right">
+                                        <span class="avatar-title bg-soft-primary rounded-circle">
+                                            {{jobData[2]['jobType']}}
+                                        </span>
+                                </div>
+                                <h6 class="text-muted text-uppercase mt-0">{{ jobData[2]['jobName'] }}</h6>
+                                <h3 class="my-3">$<span data-plugin="counterup">{{ jobData[2]['jobSalary'] }}</span></h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[2]['jobCity'] }} </span> <span class="text-muted">{{ jobData[2]['jobCompany']}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="avatar-sm float-right">
+                                        <span class="avatar-title bg-soft-primary rounded-circle">
+                                            {{jobData[3]['jobType']}}
+                                        </span>
+                                </div>
+                                <h6 class="text-muted text-uppercase mt-0">{{ jobData[3]['jobName'] }} </h6>
+                                <h3 class="my-3" data-plugin="counterup">{{ jobData[3]['jobSalary'] }}</h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[3]['jobCity'] }} </span> <span class="text-muted">{{ jobData[3]['jobCompany'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
                     <!-- end row -->
 
                     <div class="row">
