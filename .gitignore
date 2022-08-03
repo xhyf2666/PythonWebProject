@@ -1,3 +1,7 @@
 .idea
 *.iml
 Dao/mysql_config.json
+.idea/dataVisualize.iml
+.idea/misc.xml
+.idea/workspace.xml
+Dao/mysql_config.json

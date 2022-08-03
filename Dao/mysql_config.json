@@ -1,8 +1,8 @@
 {
   "host":"localhost",
   "user":"root",
-  "password":"224353Y1560x",
-  "database":"py_db",
+  "password":"123456",
+  "database":"db_database",
   "port":3306,
   "charset":"utf8"
 }
