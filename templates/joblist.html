@@ -54,16 +54,17 @@
                 currentPage=totalPage
             }
             console.log("currentPage:"+currentPage)
-            document.serachForm.currentPage.value=currentPage
-            document.serachForm.pageSize.value=pageSize
-            document.serachForm.submit()
+
+            document.getElementsByName('searchForm')[0].currentPage.value=currentPage
+            document.getElementsByName('searchForm')[0].value=pageSize
+            document.getElementsByName('searchForm')[0].submit()
         }
 
         function removeJob(jobID) {
             if(confirm("确定要删除吗？")){
-                document.serachForm.jobID.value=jobID
-                document.serachForm.opr.value="del"
-                document.serachForm.submit()
+                document.getElementsByName('searchForm')[0].jobID.value=jobID
+                document.getElementsByName('searchForm')[0].opr.value="del"
+                document.getElementsByName('searchForm')[0].submit()
             }
         }
 
@@ -221,6 +222,7 @@
                                             <span id="progressInfo"></span>
                                             </div>
                                         </form>
+
                                     </p>
 
                                     <table class="table table-striped dt-responsive nowrap">
