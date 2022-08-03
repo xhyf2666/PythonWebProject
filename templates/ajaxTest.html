@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        function ajaxTest() {
+            jsonObj={name:"zhangsan",age:30}
+            $.ajax({
+                url:"/ajax",
+                method:"post",
+                data:{
+
+                },
+                dataType:"json",
+                success:function (data) {
+                    console.log(JSON.stringify(data))
+                },
+                error:function (xhr) {
+
+                }
+            })
+
+        }
+    </script>
+</head>
+<body>
+<button onclick="ajaxTest()">异步请求</button>
+</body>
+</html>
