@@ -1,72 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>行业职位信息分析平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="MyraStudio" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="MyraStudio" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
 
     <!-- App css -->
-    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
 <body>
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
+<!-- Begin page -->
+<div id="layout-wrapper">
 
-        {% include "leftBar.html" %}
+    {% include "leftBar.html" %}
 
-        {% include "topBar.html" %}
+    {% include "topBar.html" %}
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
 
-            <div class="page-content">
-                <div class="container-fluid">
+        <div class="page-content">
+            <div class="container-fluid">
 
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">行业职位信息分析平台</h4>
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0 font-size-18">行业职位信息分析平台</h4>
 
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">系统平台</a></li>
-                                        <li class="breadcrumb-item active">首页</li>
-                                    </ol>
-                                </div>
-
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">系统平台</a></li>
+                                    <li class="breadcrumb-item active">首页</li>
+                                </ol>
                             </div>
+
                         </div>
                     </div>
-                    <!-- end page title -->
+                </div>
+                <!-- end page title -->
 
-                    <div class="row">
+                <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="avatar-sm float-right">
                                         <span class="avatar-title bg-soft-primary rounded-circle">
-                                            {{jobData[0]['jobType']}}
+                                            {{ jobData[0]['jobType'] }}
                                         </span>
                                 </div>
                                 <h6 class="text-muted text-uppercase mt-0">{{ jobData[0]['jobName'] }}</h6>
-                                <h3 class="my-3">{{jobData[0]['jobSalary']}}</h3>
-                                <span class="badge badge-soft-primary mr-1"> {{ jobData[0]['jobCity'] }} </span><span class="text-muted">{{ jobData[0]['jobCompany'] }}</span>
+                                <h3 class="my-3">{{ jobData[0]['jobSalary'] }}</h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[0]['jobCity'] }} </span><span
+                                    class="text-muted">{{ jobData[0]['jobCompany'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -77,12 +77,13 @@
                             <div class="card-body">
                                 <div class="avatar-sm float-right">
                                         <span class="avatar-title bg-soft-primary rounded-circle">
-                                            {{jobData[1]['jobType']}}
+                                            {{ jobData[1]['jobType'] }}
                                         </span>
                                 </div>
                                 <h6 class="text-muted text-uppercase mt-0">{{ jobData[1]['jobName'] }}</h6>
                                 <h3 class="my-3">{{ jobData[1]['jobSalary'] }}</h3>
-                                <span class="badge badge-soft-primary mr-1"> {{ jobData[1]['jobCity'] }} </span><span class="text-muted">{{ jobData[1]['jobCompany']}}</span>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[1]['jobCity'] }} </span><span
+                                    class="text-muted">{{ jobData[1]['jobCompany'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -92,12 +93,14 @@
                             <div class="card-body">
                                 <div class="avatar-sm float-right">
                                         <span class="avatar-title bg-soft-primary rounded-circle">
-                                            {{jobData[2]['jobType']}}
+                                            {{ jobData[2]['jobType'] }}
                                         </span>
                                 </div>
                                 <h6 class="text-muted text-uppercase mt-0">{{ jobData[2]['jobName'] }}</h6>
-                                <h3 class="my-3">$<span data-plugin="counterup">{{ jobData[2]['jobSalary'] }}</span></h3>
-                                <span class="badge badge-soft-primary mr-1"> {{ jobData[2]['jobCity'] }} </span> <span class="text-muted">{{ jobData[2]['jobCompany']}}</span>
+                                <h3 class="my-3">$<span data-plugin="counterup">{{ jobData[2]['jobSalary'] }}</span>
+                                </h3>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[2]['jobCity'] }} </span> <span
+                                    class="text-muted">{{ jobData[2]['jobCompany'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -107,303 +110,346 @@
                             <div class="card-body">
                                 <div class="avatar-sm float-right">
                                         <span class="avatar-title bg-soft-primary rounded-circle">
-                                            {{jobData[3]['jobType']}}
+                                            {{ jobData[3]['jobType'] }}
                                         </span>
                                 </div>
                                 <h6 class="text-muted text-uppercase mt-0">{{ jobData[3]['jobName'] }} </h6>
                                 <h3 class="my-3" data-plugin="counterup">{{ jobData[3]['jobSalary'] }}</h3>
-                                <span class="badge badge-soft-primary mr-1"> {{ jobData[3]['jobCity'] }} </span> <span class="text-muted">{{ jobData[3]['jobCompany'] }}</span>
+                                <span class="badge badge-soft-primary mr-1"> {{ jobData[3]['jobCity'] }} </span> <span
+                                    class="text-muted">{{ jobData[3]['jobCompany'] }}</span>
                             </div>
                         </div>
                     </div>
 
 
                 </div>
-                    <!-- end row -->
+                <!-- end row -->
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-lg-8">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">不同职位薪资对比图</h4>
-                                    <div id="jobBar" class="morris-chart" style="height: 320px;"></div>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-
-                        <div class="col-lg-4">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">职位数量对比图</h4>
-
-                                    <div id="jobPie" class="morris-chart" style="height: 320px;"></div>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-                    </div>
-                    <!-- end row-->
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">职位工资对比图</h4>
-                                    <div id="jobLine" class="morris-chart" style="height: 320px;"></div>
-
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">职位数据分布图</h4>
-                                    <div id="jobMap"  style="height: 480px;"></div>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-
-                    </div>
-                    <!-- end row-->
-
-                </div> <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            2020 © Opatix.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-right d-none d-sm-block">
-                                Design & Develop by Myra
+                    <div class="col-lg-8">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block">不同职位薪资对比图</h4>
+                                <div id="jobBar" class="morris-chart" style="height: 320px;"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- end col -->
+
+                    <div class="col-lg-4">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block">职位数量对比图</h4>
+
+                                <div id="jobPie" class="morris-chart" style="height: 320px;"></div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
                 </div>
-            </footer>
+                <!-- end row-->
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block">职位工资对比图</h4>
+                                <div id="jobLine" class="morris-chart" style="height: 320px;"></div>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
+                </div>
+                <!-- end row-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block">薪资数量统计图</h4>
+
+                                <div id="salaryJobBar" class="morris-chart" style="height: 320px;width: 720px ">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
+                </div>
+                <!-- end row-->
+
+            </div> <!-- container-fluid -->
         </div>
-        <!-- end main content-->
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        2020 © Opatix.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-right d-none d-sm-block">
+                            Design & Develop by Myra
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </div>
-    <!-- END layout-wrapper -->
+    <!-- end main content-->
 
-    <!-- Overlay-->
-    <div class="menu-overlay"></div>
+</div>
+<!-- END layout-wrapper -->
 
-
-    <!-- jQuery  -->
-    <script src="/static/assets/js/jquery.min.js"></script>
-    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/js/metismenu.min.js"></script>
-    <script src="/static/assets/js/waves.js"></script>
-    <script src="/static/assets/js/simplebar.min.js"></script>
-    <script src="/static/assets/js/echarts.min.js"></script>
-    <script src="/static/assets/js/china.js"></script>
-     <script src="/static/assets/js/area_echarts.js"></script>
-
-    <!-- Morris Js-->
-    <script src="../plugins/morris-js/morris.min.js"></script>
-    <!-- Raphael Js-->
-    <script src="../plugins/raphael/raphael.min.js"></script>
-
-    <!-- Morris Custom Js-->
-    <script src="/static/assets/pages/dashboard-demo.js"></script>
-
-    <!-- App js -->
-    <script src="/static/assets/js/theme.js"></script>
+<!-- Overlay-->
+<div class="menu-overlay"></div>
 
 
-    <script type="text/javascript">
-           $.ajax({
-                url: '/getjobsalarybytype',
-                method: 'post',
-                data: {
+<!-- jQuery  -->
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/js/metismenu.min.js"></script>
+<script src="/static/assets/js/waves.js"></script>
+<script src="/static/assets/js/simplebar.min.js"></script>
+<script src="/static/assets/js/echarts.max.js"></script>
+<script src="/static/assets/js/china.js"></script>
+<script src="/static/assets/js/area_echarts.js"></script>
 
+<!-- Morris Js-->
+<script src="../plugins/morris-js/morris.min.js"></script>
+<!-- Raphael Js-->
+<script src="../plugins/raphael/raphael.min.js"></script>
+
+<!-- Morris Custom Js-->
+<script src="/static/assets/pages/dashboard-demo.js"></script>
+
+<!-- App js -->
+<script src="/static/assets/js/theme.js"></script>
+
+
+<script type="text/javascript">
+    $.ajax({
+        url: '/getjobsalarybytype',
+        method: 'post',
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            labels = []
+            values = []
+            for (i = 0; i < data.length; i++) {
+                labels[i] = data[i].jobType
+                values[i] = data[i].jobsavg
+            }
+
+            var chartDom = document.getElementById('jobBar');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: labels
                 },
-                dataType: "json",
-                success: function (data) {
-                    labels = []
-                    values = []
-                    for(i=0;i<data.length;i++){
-                        labels[i] = data[i].jobType
-                        values[i] = data[i].jobsavg
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: values,
+                        type: 'bar'
                     }
+                ]
+            };
 
-                    var chartDom = document.getElementById('jobBar');
-                    var myChart = echarts.init(chartDom);
-                    var option;
+            option && myChart.setOption(option);
 
-                    option = {
-                      xAxis: {
-                        type: 'category',
-                        data: labels
-                      },
-                      yAxis: {
-                        type: 'value'
-                      },
-                      series: [
-                        {
-                          data: values,
-                          type: 'bar'
-                        }
-                      ]
-                    };
+        },
+        error: function (xhr) {
+        }
+    })
 
-                    option && myChart.setOption(option);
+    $.ajax({
+        url: '/getjobcountbytype',
+        method: 'post',
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            pieData = []
+            for (i = 0; i < data.length; i++) {
+                jsonData = {value: data[i].jobCount, name: data[i].jobType}
+                pieData[i] = jsonData
+            }
+            var chartDom = document.getElementById('jobPie');
+            var myChart = echarts.init(chartDom);
+            var option;
 
+            option = {
+                title: {
+                    text: '',
+                    subtext: '',
+                    left: 'center'
                 },
-                error: function (xhr) {
-                }
-            })
-
-           $.ajax({
-                url: '/getjobcountbytype',
-                method: 'post',
-                data: {
-
+                tooltip: {
+                    trigger: 'item'
                 },
-                dataType: "json",
-                success: function (data) {
-                    pieData = []
-                    for(i=0;i<data.length;i++){
-                        jsonData = {value : data[i].jobCount, name: data[i].jobType}
-                        pieData[i] = jsonData
-                    }
-                    var chartDom = document.getElementById('jobPie');
-                    var myChart = echarts.init(chartDom);
-                    var option;
-
-                    option = {
-                      title: {
-                        text: '',
-                        subtext: '',
-                        left: 'center'
-                      },
-                      tooltip: {
-                        trigger: 'item'
-                      },
-                      legend: {
-                        orient: 'vertical',
-                        left: 'left'
-                      },
-                      series: [
-                        {
-                          name: 'Access From',
-                          type: 'pie',
-                          radius: '50%',
-                          data: pieData,
-                          emphasis: {
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: '50%',
+                        data: pieData,
+                        emphasis: {
                             itemStyle: {
-                              shadowBlur: 10,
-                              shadowOffsetX: 0,
-                              shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
                             }
-                          }
                         }
-                      ]
-                    };
-
-                    option && myChart.setOption(option);
-
-                },
-                error: function (xhr) {
-                }
-            })
-
-           $.ajax({
-                url: '/getjobhlsalarybytype',
-                method: 'post',
-                data: {
-
-                },
-                dataType: "json",
-                success: function (data) {
-                    lineData = []
-                    x=[]
-                    for(i=0;i<data.length;i++){
-                        x[i]=data[i]['jobType']
                     }
-                    type=['jobsHigh','jobsAvg','jobsLow']
-                    for (i=0;i<type.length;i++){
-                        tmp=[]
-                        for (j=0;j<data.length;j++){
-                            tmp.push(data[j][type[i]])
-                        }
-                        lineData.push(tmp)
-                    }
+                ]
+            };
 
-                    var chartDom = document.getElementById('jobLine');
-                    var myChart = echarts.init(chartDom);
-                    var option;
+            option && myChart.setOption(option);
 
-                    option = {
-                      title: {
-                        text: ''
-                      },
-                      tooltip: {
-                        trigger: 'axis'
-                      },
-                      legend: {
-                        data: ['High', 'Average', 'Low']
-                      },
-                      grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                      },
-                      toolbox: {
-                        feature: {
-                          saveAsImage: {}
-                        }
-                      },
-                      xAxis: {
-                        type: 'category',
-                        boundaryGap: false,
-                        data: x
-                      },
-                      yAxis: {
-                        type: 'value'
-                      },
-                      series: [
-                        {
-                          name: 'High',
-                          type: 'line',
-                          stack: 'Total',
-                          data: lineData[0]
-                        },
-                        {
-                          name: 'Average',
-                          type: 'line',
-                          stack: 'Total',
-                          data: lineData[1]
-                        },
-                        {
-                          name: 'Low',
-                          type: 'line',
-                          stack: 'Total',
-                          data: lineData[2]
-                        }
-                      ]
-                    };
+        },
+        error: function (xhr) {
+        }
+    })
 
-                    option && myChart.setOption(option);
-
-
-                },
-                error: function (xhr) {
+    $.ajax({
+        url: '/getjobhlsalarybytype',
+        method: 'post',
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            lineData = []
+            x = []
+            for (i = 0; i < data.length; i++) {
+                x[i] = data[i]['jobType']
+            }
+            type = ['jobsHigh', 'jobsAvg', 'jobsLow']
+            for (i = 0; i < type.length; i++) {
+                tmp = []
+                for (j = 0; j < data.length; j++) {
+                    tmp.push(data[j][type[i]])
                 }
-            })
-    </script>
+                lineData.push(tmp)
+            }
 
+            var chartDom = document.getElementById('jobLine');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+            option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['High', 'Average', 'Low']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: x
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name: 'High',
+                        type: 'line',
+                        stack: 'Total',
+                        data: lineData[0]
+                    },
+                    {
+                        name: 'Average',
+                        type: 'line',
+                        stack: 'Total',
+                        data: lineData[1]
+                    },
+                    {
+                        name: 'Low',
+                        type: 'line',
+                        stack: 'Total',
+                        data: lineData[2]
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+
+
+        },
+        error: function (xhr) {
+        }
+    })
+
+</script>
+
+<script type="text/javascript">
+    $.ajax({
+        url: '/getjobcountbysalary',
+        method: 'post',
+        data: {},
+        dataType: 'json',
+        success: function (data) {
+            var chartDom = document.getElementById('salaryJobBar');
+            var myChart = echarts.init(chartDom);
+            var option;
+            count = []
+            for (i = 0; i < data.length; i++) {
+                count[i] = data[i][0].jobCount
+            }
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['15k以下', '15k~30k', '30k以上']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: count,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        }
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+
+
+        },
+        error: function (xhr) {
+
+        }
+    })
+</script>
 </body>
 
 </html>

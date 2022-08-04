@@ -1,0 +1,52 @@
+[
+    {
+        "jobCompany": "易构智能科技(广州)有限公司",
+        "jobLowSalary": 12.0,
+        "jobID": 442
+    },
+    {
+        "jobCompany": "西安知名科研所",
+        "jobLowSalary": 25.0,
+        "jobID": 494
+    },
+    {
+        "jobCompany": "西安知名科研所",
+        "jobLowSalary": 25.0,
+        "jobID": 495
+    },
+    {
+        "jobCompany": "某北京大型交通物流运输公司",
+        "jobLowSalary": 25.0,
+        "jobID": 560
+    },
+    {
+        "jobCompany": "西安某大型科研机构",
+        "jobLowSalary": 20.0,
+        "jobID": 650
+    },
+    {
+        "jobCompany": "成都诺比侃科技有限公司",
+        "jobLowSalary": 15.0,
+        "jobID": 668
+    },
+    {
+        "jobCompany": "中国建筑第五工程局有限公司",
+        "jobLowSalary": 30.0,
+        "jobID": 693
+    },
+    {
+        "jobCompany": "安图生物",
+        "jobLowSalary": 15.0,
+        "jobID": 697
+    },
+    {
+        "jobCompany": "某南京IT服务公司",
+        "jobLowSalary": 30.0,
+        "jobID": 725
+    },
+    {
+        "jobCompany": "武汉唯众智创科技",
+        "jobLowSalary": 8.0,
+        "jobID": 729
+    }
+]

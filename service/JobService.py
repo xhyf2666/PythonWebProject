@@ -38,6 +38,14 @@ class JobService():
             jobDao.close()
         return data
 
+    def getJobCountByJobSalary(self, start, end):
+        jobDao = JobDao()
+        try:
+            data = jobDao.getJobCountByJobSalary(start, end)
+        finally:
+            jobDao.close()
+        return data
+
     def getJobPageList(self, search, page):
         jobDao = JobDao()
         try:
@@ -171,10 +179,10 @@ class JobService():
 
         return result
 
-    def getAllTypeAndCity(self,search):
+    def getAllTypeAndCity(self, search):
         jobDao = JobDao()
         try:
-            result1,result2 = jobDao.getAllTypeAndCity(search)
+            result1, result2 = jobDao.getAllTypeAndCity(search)
             type = [i['jobType'] for i in result1]
             city = [i['jobCity'] for i in result2]
         except Exception as e:
@@ -182,4 +190,12 @@ class JobService():
         finally:
             jobDao.close()
 
-        return type,city
+        return type, city
+
+    def get_similar_by_id(self, job_id):
+        jobDao = JobDao()
+        try:
+            data = jobDao.get_similar_by_id(job_id)
+        finally:
+            jobDao.close()
+        return data
