@@ -42,7 +42,6 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop('user')
-    session.pop('jobData')
     session.clear()
     return render_template("index.html")
     pass

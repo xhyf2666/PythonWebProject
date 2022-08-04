@@ -1,8 +1,13 @@
-from flask import render_template,redirect,request,sessions,Blueprint
+from flask import render_template,redirect,request,session,Blueprint
 import json
 from service.UserService import UserService
 userController=Blueprint('userController',__name__)
 
+
+@userController.before_request
+def before():
+    if session.get('user') is None:
+        return render_template('index.html')
 @userController.route('/userlist',methods=['post','get'])
 def userlist():
     searchName=request.form.get("searchName")
