@@ -7,3 +7,5 @@ Dao/mysql_config.json
 **/__pycache__
 static/assets/js/job_similar.json
 service/dbtest.py
+controller/JobController.py
+static/assets/js/job_similar.json
