@@ -1,7 +1,10 @@
+import WriteLog
 from Dao.JobDao import JobDao
+from WriteLog import WriteLog
 
 
 class JobService():
+    log = WriteLog()
 
     def getJobSalaryByJobType(self):
         jobDao = JobDao()
@@ -57,6 +60,8 @@ class JobService():
         jobDao = JobDao()
         try:
             data = jobDao.getTopSalaryJobs()
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
         return data
@@ -65,6 +70,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.updateJob(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -74,6 +81,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.updateJobDetail(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -83,6 +92,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.removeJob(jobID)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -92,6 +103,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.addJob(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -101,6 +114,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.addSimilarJob(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -110,6 +125,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.getAllJobList()
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -119,6 +136,8 @@ class JobService():
         jobDao = JobDao()
         try:
             job, sjobList = jobDao.getJobDetails(id)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -131,6 +150,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.updateJobStatus(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -140,6 +161,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.getCount()['counts']
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -149,6 +172,8 @@ class JobService():
         jobDao = JobDao()
         try:
             result = jobDao.getJobStatus(statusName)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 
@@ -160,6 +185,8 @@ class JobService():
             result1, result2 = jobDao.getAllTypeAndCity(search)
             type = [i['jobType'] for i in result1]
             city = [i['jobCity'] for i in result2]
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             jobDao.close()
 

@@ -1,13 +1,16 @@
 from Dao.UserDao import UserDao
+from WriteLog import WriteLog
+
 
 class UserService():
-
 
 
     def getUserByUserName(self,userName):
         userDao = UserDao()
         try:
             user = userDao.getUserByUserName(userName)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
         return user
@@ -17,6 +20,8 @@ class UserService():
         userDao=UserDao()
         try:
             userList=userDao.getAllUserList()
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
         return userList
@@ -26,6 +31,8 @@ class UserService():
         try:
             pageList=userDao.getUserPageList(search,page)
             count=userDao.getTotalCount(search)['counts']
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
 
@@ -35,6 +42,8 @@ class UserService():
         userDao=UserDao()
         try:
             result=userDao.removeUser(userID)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
 
@@ -44,6 +53,8 @@ class UserService():
         userDao=UserDao()
         try:
             result=userDao.updateUser(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
 
@@ -53,6 +64,8 @@ class UserService():
         userDao=UserDao()
         try:
             result=userDao.addUser(data)
+        except Exception as e:
+            WriteLog().ErrorLog(e)
         finally:
             userDao.close()
 

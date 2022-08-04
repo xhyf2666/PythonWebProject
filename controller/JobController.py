@@ -2,6 +2,8 @@ import operator
 
 from flask import render_template, redirect, request, sessions, Blueprint
 import json
+
+from WriteLog import WriteLog
 from service.JobService import JobService
 from service.UserService import UserService
 
@@ -94,6 +96,18 @@ def joblist():
     if opr and opr == "del":
         result = jobService.removeJob(jobID)
         pass
+    elif opr and opr=="update":
+        jobLowSalary=request.form.get("jobLowSalary")
+        jobHighSalary=request.form.get("jobHighSalary")
+
+        try:
+            jobAverageSalary = (float(jobLowSalary) + float(jobHighSalary)) / 2.0
+        except Exception as e:
+            WriteLog().WarningLog("salray is none")
+            jobAverageSalary = 0.0
+        data={"jobID":jobID,"jobLowSalary":jobLowSalary,"jobHighSalary":jobHighSalary,"jobAverageSalary":jobAverageSalary}
+        result =jobService.updateJob(data)
+
     elif opr and opr == "update":
         jobLowSalary = request.form.get("jobLowSalary")
         jobHighSalary = request.form.get("jobHighSalary")
@@ -108,7 +122,11 @@ def joblist():
         jobType = request.form.get("jobType")
         jobLowSalary = request.form.get("jobLowSalary")
         jobHighSalary = request.form.get("jobHighSalary")
-        jobAverageSalary = (float(jobLowSalary) + float(jobHighSalary)) / 2.0
+        try:
+            jobAverageSalary = (float(jobLowSalary) + float(jobHighSalary)) / 2.0
+        except Exception as e:
+            WriteLog().WarningLog("salray is none")
+            jobAverageSalary = 0.0
 
         data = {"jobID": jobID, "jobLowSalary": jobLowSalary, "jobHighSalary": jobHighSalary,
                 "jobAverageSalary": jobAverageSalary, "jobCompany": jobCompany, "jobName": jobName, "jobCity": jobCity,
