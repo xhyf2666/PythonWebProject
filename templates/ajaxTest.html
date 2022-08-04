@@ -8,10 +8,10 @@
         function ajaxTest() {
             jsonObj={name:"zhangsan",age:30}
             $.ajax({
-                url:"/ajax",
+                url:"/jobsimilarchart",
                 method:"post",
                 data:{
-
+                    "jobID":"1"
                 },
                 dataType:"json",
                 success:function (data) {

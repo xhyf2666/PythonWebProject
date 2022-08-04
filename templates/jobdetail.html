@@ -18,7 +18,11 @@
     <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-
+        function print(){
+        var job_id = job_id.name.value;
+        alert(job_id)
+        return job_id
+    }
     </script>
 </head>
 
@@ -62,7 +66,7 @@
                              <div class="card card-animate">
                                 <div class="card-body">
                                     <h4 class="card-title d-inline-block">职位：{{ job.jobName }}</h4>
-                                    <div id="jobMap" >
+                                    <div id="jobMap">
                                         {{ job.jobDetail }}
                                     </div>
                                 </div>
@@ -79,7 +83,6 @@
                                     <p class="card-subtitle mb-4">
                                        相关职位
                                     </p>
-
                                     <table class="table table-striped dt-responsive nowrap">
                                         <thead>
                                             <tr>
@@ -87,28 +90,39 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for job in sjobList %}
+                                        {% for jobs in sjobList %}
                                             <tr>
                                                 <td>
-                                                    {{ job.jobID }}
+                                                    {{ jobs.jobID }}
                                                 </td>
                                                 <td>
-                                                    <a href="/jobdetail?jobID={{ job.jobID }}"> {{ job.jobName }}</a>
+                                                    <a href="/jobdetail?jobID={{ jobs.jobID }}"> {{ jobs.jobName }}</a>
                                                 </td>
                                                 <td>
-                                                    {{ job.jobAddress }}
+                                                    {{ jobs.jobAddress }}
                                                 </td>
                                                   <td>
-                                                    {{ job.jobSalary }}
+                                                    {{ jobs.jobSalary }}
                                                 </td>
                                                   <td>
-                                                    {{ job.jobCompany }}
+                                                    {{ jobs.jobCompany }}
                                                 </td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
                                     </table>
                                 </div> <!-- end card body-->
+                             <div class="row">
+                        <div class="col-lg-12">
+                             <div class="card card-animate">
+                                <div class="card-body">
+                                    <h4 class="card-title d-inline-block">相似职业薪资南丁格尔图</h4>
+                                    <div id="main"  style="height: 480px;"></div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                    </div>
                             </div> <!-- end card -->
                         </div><!-- end col-->
                     </div>
@@ -147,6 +161,11 @@
     <script src="/static/assets/js/metismenu.min.js"></script>
     <script src="/static/assets/js/waves.js"></script>
     <script src="/static/assets/js/simplebar.min.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metismenu.min.js"></script>
+    <script src="/static/assets/js/waves.js"></script>
+    <script src="/static/assets/js/echarts.min.js"></script>
 
     <!-- Morris Js-->
     <script src="../plugins/morris-js/morris.min.js"></script>
@@ -158,6 +177,59 @@
 
     <!-- App js -->
     <script src="/static/assets/js/theme.js"></script>
+    <script type="text/javascript"><!--echart script here-->
+    $.ajax({
+                url:"/static/assets/js/job_similar.json",
+                method:"get",
+                dataType:"json",
+                success:function (data) {
+                    pieData = []
+                    for(i = 0;i<data.length;i++){
+                        jsonData = {value : data[i].jobLowSalary, name: data[i].jobCompany}
+                        pieData[i] = jsonData
+                        console.log(jsonData)
+                        var chartDom = document.getElementById('main');
+                        var myChart = echarts.init(chartDom);
+                        var option;
+
+                        option = {
+                          legend: {
+                            top: 'bottom'
+                          },
+                          toolbox: {
+                            show: true,
+                            feature: {
+                              mark: { show: true },
+                              dataView: { show: true, readOnly: false },
+                              restore: { show: true },
+                              saveAsImage: { show: true }
+                            }
+                          },
+                          series: [
+                            {
+                              name: 'Nightingale Chart',
+                              type: 'pie',
+                              radius: [30, 150],
+                              center: ['50%', '50%'],
+                              roseType: 'area',
+                              itemStyle: {
+                                borderRadius: 8
+                              },
+                              data: pieData
+                            }
+                          ]
+                        };
+
+                        option && myChart.setOption(option);
+
+                    }
+                },
+                error:function (xhr) {
+
+                }
+            })
+
+    </script>
 </body>
 
 </html>
