@@ -5,3 +5,5 @@
 .idea/workspace.xml
 Dao/mysql_config.json
 **/__pycache__
+static/assets/js/job_similar.json
+service/dbtest.py
