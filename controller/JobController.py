@@ -38,6 +38,17 @@ def getJobHLSalaryByJobCity():
     pass
 
 
+@jobController.route('/getjobcountbysalary', methods=['get', 'post'])
+def getJobCountByJobSalary():
+    jobService = JobService()
+    data = []
+    data.append(jobService.getJobCountByJobSalary(0, 15000))
+    data.append(jobService.getJobCountByJobSalary(15000, 30000))
+    data.append(jobService.getJobCountByJobSalary(30000, 1000000))
+
+    return json.dumps(data, ensure_ascii=False)
+
+
 @jobController.route('/joblist', methods=['post', 'get'])
 def joblist():
     searchName = request.form.get("searchName")
