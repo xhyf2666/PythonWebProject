@@ -256,11 +256,11 @@ $.ajax({
     dataType: "json",
     success: function (data) {
         radiusAxis = []
-        series = []
+        series1 = []
         max_top = []
         for (i = 0; i < data.length; i++){
             radiusAxis[i] = data[i].jobID
-            series[i] = data[i].similar
+            series1[i] = data[i].similar
             max_top = data[i].similar
         }
         max_top[0] = Math.max(Math, max_top) + 0.2
@@ -285,7 +285,7 @@ $.ajax({
           tooltip: {},
           series: {
             type: 'bar',
-            data: series,
+            data: series1,
             coordinateSystem: 'polar',
             label: {
               position: 'middle',
@@ -295,8 +295,8 @@ $.ajax({
         };
 
         option && myChart1.setOption(option);
-        myChart1.on('click', function (params) {
-                window.location.href = "/jobdetail?jobID=" + params.data.jobID;
+        myChart1.on('click', function (param) {
+                window.location.href = "/jobdetail?jobID=" + param.name;
             });
 
     },

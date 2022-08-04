@@ -24,6 +24,17 @@ def getJobCountByJobType():
     pass
 
 
+@jobController.route('/getjobcountbysalary', methods=['get', 'post'])
+def getJobCountByJobSalary():
+    jobService = JobService()
+    data = []
+    data.append(jobService.getJobCountByJobSalary(0, 15000))
+    data.append(jobService.getJobCountByJobSalary(15000, 30000))
+    data.append(jobService.getJobCountByJobSalary(30000, 1000000))
+
+    return json.dumps(data, ensure_ascii=False)
+
+
 @jobController.route('/getjobcountbycity', methods=['get', 'post'])
 def getJobCountByJobCity():
     jobService = JobService()
