@@ -1,6 +1,7 @@
 from flask import render_template, redirect, request, sessions, Blueprint
 import json
 from service.JobService import JobService
+import os
 from service.UserService import UserService
 
 jobController = Blueprint("jobController", __name__)
@@ -236,8 +237,10 @@ def getJobDetail():
         temp["jobCompany"] = jobs["jobCompany"]
         char = int(jobs["jobLowSalary"]) / 1000
         temp["jobLowSalary"] = char
+        temp["jobID"]=jobs["jobID"]
         job_list.append(temp)
-    filename = './/static/assets/js/job_similar.json'
+
+    filename = './static/assets/js/job_similar.json'
     jsonfile = open(filename, 'w', encoding='utf-8')
     json.dump(job_list, jsonfile, ensure_ascii=False, indent=4)
     return render_template("jobdetail.html", job=job, sjobList=sjobList)
