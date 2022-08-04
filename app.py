@@ -1,4 +1,6 @@
 from flask import Flask,render_template,redirect,request,session
+
+from WriteLog import WriteLog
 from service.UserService import UserService
 from service.JobService import JobService
 from controller.UserController import userController
@@ -27,7 +29,7 @@ def login():
         else:
             return render_template('index.html', message="密码错误")
     except Exception as e:
-        print(e)
+        WriteLog().ErrorLog(e)
 
 # 退出
 @app.route("/logout")
