@@ -216,3 +216,8 @@ class JobDao(BaseDao):
         self.execute(sql2, params)
         cities = self.fetchall()
         return types, cities
+
+    def get_similar_by_id(self, job_id):
+        sql = "SELECT score as similar FROM db_database.t_job_similar where jobID = %s"
+        self.execute(sql, job_id)
+        return self.fetchall()

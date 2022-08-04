@@ -57,6 +57,10 @@ def ajaxTest():
     return render_template("ajaxTest.html")
     pass
 
+@app.route("/fun")
+def sad():
+    return render_template("test.html")
+
 
 if __name__ == '__main__':
     app.run()

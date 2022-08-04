@@ -2,239 +2,311 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>职位详情</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="MyraStudio" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="MyraStudio" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Plugins css -->
-     <!-- App css -->
-    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+    <!-- App css -->
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/theme.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript">
-        function print(){
-        var job_id = job_id.name.value;
-        alert(job_id)
-        return job_id
-    }
+        function print() {
+            var job_id = job_id.name.value;
+            alert(job_id)
+            return job_id
+        }
     </script>
 </head>
 
 <body>
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
+<!-- Begin page -->
+<div id="layout-wrapper">
 
-        <!-- ========== Left Sidebar Start ========== -->
-        {% include "leftBar.html" %}
+    <!-- ========== Left Sidebar Start ========== -->
+    {% include "leftBar.html" %}
 
-        {% include "topBar.html" %}
+    {% include "topBar.html" %}
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
 
-            <div class="page-content">
-                <div class="container-fluid">
+        <div class="page-content">
+            <div class="container-fluid">
 
-                    <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">数据管理</h4>
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0 font-size-18">数据管理</h4>
 
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">数据管理</a></li>
-                                        <li class="breadcrumb-item active">职位详情</li>
-                                    </ol>
-                                </div>
-
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">数据管理</a></li>
+                                    <li class="breadcrumb-item active">职位详情</li>
+                                </ol>
                             </div>
-                        </div>
-                    </div>
-                    <!-- end page title -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">职位：{{ job.jobName }}</h4>&nbsp;&nbsp;&nbsp;
-                                    <h4 class="card-title d-inline-block">公司：{{ job.jobCompany }}</h4>&nbsp;&nbsp;&nbsp;
-                                    <h4 class="card-title d-inline-block">地址：{{ job.jobAddress }}</h4>&nbsp;&nbsp;&nbsp;
-                                    <h4 class="card-title d-inline-block">薪资：{{ job.jobSalary }}</h4>&nbsp;&nbsp;&nbsp;
-                                    <div id="jobMap" style="white-space: pre-line;">
-                                        {{ job.jobDetail }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
 
-                    </div>
-                    <!-- end row-->
-
-                    <div class="row">
-                        <div class="col-12">
-                             <div class="card">
-                                <div class="card-body">
-                                    <p class="card-subtitle mb-4">
-                                       相关职位
-                                    </p>
-                                    <table class="table table-striped dt-responsive nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>职位ID</th><th>职位名称</th><th>城市</th><th>薪资</th><th>公司</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for jobs in sjobList %}
-                                            <tr>
-                                                <td>
-                                                    {{ jobs.jobID }}
-                                                </td>
-                                                <td>
-                                                    <a href="/jobdetail?jobID={{ jobs.jobID }}"> {{ jobs.jobName }}</a>
-                                                </td>
-                                                <td>
-                                                    {{ jobs.jobAddress }}
-                                                </td>
-                                                  <td>
-                                                    {{ jobs.jobSalary }}
-                                                </td>
-                                                  <td>
-                                                    {{ jobs.jobCompany }}
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div> <!-- end card body-->
-                             <div class="row">
-                        <div class="col-lg-12">
-                             <div class="card card-animate">
-                                <div class="card-body">
-                                    <h4 class="card-title d-inline-block">相似职业薪资南丁格尔图</h4>
-                                    <div id="main"  style="height: 480px;"></div>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-
-                    </div>
-                            </div> <!-- end card -->
-                        </div><!-- end col-->
-                    </div>
-                    <!-- end row-->
-                </div> <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            2020 © Opatix.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-right d-none d-sm-block">
-                                Design & Develop by Myra
-                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
+                <!-- end page title -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block">职位：{{ job.jobName }}</h4>&nbsp;&nbsp;&nbsp;
+                                <h4 class="card-title d-inline-block">公司：{{ job.jobCompany }}</h4>&nbsp;&nbsp;&nbsp;
+                                <h4 class="card-title d-inline-block">地址：{{ job.jobAddress }}</h4>&nbsp;&nbsp;&nbsp;
+                                <h4 class="card-title d-inline-block">薪资：{{ job.jobSalary }}</h4>&nbsp;&nbsp;&nbsp;
+                                <div id="jobMap" style="white-space: pre-line;">
+                                    {{ job.jobDetail }}
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
 
+                </div>
+                <!-- end row-->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-subtitle mb-4">
+                                    相关职位
+                                </p>
+                                <table class="table table-striped dt-responsive nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>职位ID</th>
+                                        <th>职位名称</th>
+                                        <th>城市</th>
+                                        <th>薪资</th>
+                                        <th>公司</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for jobs in sjobList %}
+                                        <tr>
+                                            <td>
+                                                {{ jobs.jobID }}
+                                            </td>
+                                            <td>
+                                                <a href="/jobdetail?jobID={{ jobs.jobID }}"> {{ jobs.jobName }}</a>
+                                            </td>
+                                            <td>
+                                                {{ jobs.jobAddress }}
+                                            </td>
+                                            <td>
+                                                {{ jobs.jobSalary }}
+                                            </td>
+                                            <td>
+                                                {{ jobs.jobCompany }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div> <!-- end card body-->
+                            <div class="row">
+                                <div class="col-lg-50">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <h4 class="card-title d-inline-block">相似职业薪资南丁格尔图</h4>
+                                            <div id="main" class="morris-chart" style="height: 320px;"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+
+                                <div class="col-lg-50">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <h4 class="card-title d-inline-block">职位相关性图</h4>
+
+                                            <div id="job_similar" class="morris-chart" style="height: 320px;"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+
+                            </div>
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
+                </div>
+                <!-- end row-->
+            </div> <!-- container-fluid -->
         </div>
-        <!-- end main content-->
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        2020 © Opatix.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-right d-none d-sm-block">
+                            Design & Develop by Myra
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </div>
-    <!-- END layout-wrapper -->
+    <!-- end main content-->
 
-    <!-- Overlay-->
-    <div class="menu-overlay"></div>
+</div>
+<!-- END layout-wrapper -->
 
-       <!-- jQuery  -->
-    <script src="/static/assets/js/jquery.min.js"></script>
-    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/js/metismenu.min.js"></script>
-    <script src="/static/assets/js/waves.js"></script>
-    <script src="/static/assets/js/simplebar.min.js"></script>
-    <script src="/static/assets/js/jquery.min.js"></script>
-    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/assets/js/metismenu.min.js"></script>
-    <script src="/static/assets/js/waves.js"></script>
-    <script src="/static/assets/js/echarts.min.js"></script>
+<!-- Overlay-->
+<div class="menu-overlay"></div>
 
-    <!-- Morris Js-->
-    <script src="../plugins/morris-js/morris.min.js"></script>
-    <!-- Raphael Js-->
-    <script src="../plugins/raphael/raphael.min.js"></script>
+<!-- jQuery  -->
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/js/metismenu.min.js"></script>
+<script src="/static/assets/js/waves.js"></script>
+<script src="/static/assets/js/simplebar.min.js"></script>
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/js/metismenu.min.js"></script>
+<script src="/static/assets/js/waves.js"></script>
+<script src="/static/assets/js/echarts.max.js"></script>
 
-    <!-- Morris Custom Js-->
-    <script src="/static/assets/pages/dashboard-demo.js"></script>
+<!-- Morris Js-->
+<script src="../plugins/morris-js/morris.min.js"></script>
+<!-- Raphael Js-->
+<script src="../plugins/raphael/raphael.min.js"></script>
 
-    <!-- App js -->
-    <script src="/static/assets/js/theme.js"></script>
-    <script type="text/javascript"><!--echart script here-->
-    $.ajax({
-                url:"/static/assets/js/job_similar.json",
-                method:"get",
-                dataType:"json",
-                success:function (data) {
-                    pieData = []
-                    for(i = 0;i<data.length;i++){
-                        jsonData = {value : data[i].jobLowSalary, name: data[i].jobCompany,jobID:data[i].jobID}
-                        pieData[i] = jsonData
-                        console.log(jsonData)
-                        var chartDom = document.getElementById('main');
-                        var myChart = echarts.init(chartDom);
-                        var option;
+<!-- Morris Custom Js-->
+<script src="/static/assets/pages/dashboard-demo.js"></script>
 
-                        option = {
-                          legend: {
-                            top: 'bottom'
-                          },
-                          toolbox: {
-                            show: true,
-                            feature: {
-                              mark: { show: true },
-                              dataView: { show: true, readOnly: false },
-                              restore: { show: true },
-                              saveAsImage: { show: true }
-                            }
-                          },
-                          series: [
-                            {
-                              name: 'Nightingale Chart',
-                              type: 'pie',
-                              radius: [30, 150],
-                              center: ['50%', '50%'],
-                              roseType: 'area',
-                              itemStyle: {
-                                borderRadius: 8
-                              },
-                              data: pieData
-                            }
-                          ]
-                        };
+<!-- App js -->
+<script src="/static/assets/js/theme.js"></script>
+<script type="text/javascript"><!--echart script here-->
+$.ajax({
+    url: "/static/assets/js/job_similar.json",
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+        pieData = []
+        for (i = 0; i < data.length; i++) {
+            jsonData = {value: data[i].jobLowSalary, name: data[i].jobCompany, jobID: data[i].jobID}
+            pieData[i] = jsonData
+            console.log(jsonData)
+            var chartDom = document.getElementById('main');
+            var myChart = echarts.init(chartDom);
+            var option;
 
-                        option && myChart.setOption(option);
-                        myChart.on('click', function (param) {
-                            window.location.href = "/jobdetail?jobID="+param.data.jobID;
-                        });
+            option = {
+                legend: {
+                    top: 'bottom'
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
                     }
                 },
-                error:function (xhr) {
+                series: [
+                    {
+                        name: 'Nightingale Chart',
+                        type: 'pie',
+                        radius: [30, 150],
+                        center: ['50%', '50%'],
+                        roseType: 'area',
+                        itemStyle: {
+                            borderRadius: 8
+                        },
+                        data: pieData
+                    }
+                ]
+            };
 
-                }
-            })
+            option && myChart.setOption(option);
+            myChart.on('click', function (param) {
+                window.location.href = "/jobdetail?jobID=" + param.data.jobID;
+            });
+        }
+    },
+    error: function (xhr) {
 
-    </script>
+    }
+
+
+})
+
+$.ajax({
+    url: "/static/assets/js/job_similar.json",
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+        radiusAxis = []
+        series = []
+        max_top = []
+        for (i = 0; i < data.length; i++){
+            radiusAxis[i] = data[i].jobID
+            series[i] = data[i].similar
+            max_top = data[i].similar
+        }
+        max_top[0] = Math.max(Math, max_top) + 0.2
+        var chartDom = document.getElementById('job_similar');
+        var myChart1 = echarts.init(chartDom);
+        var option;
+
+        option = {
+          title: [
+          ],
+          polar: {
+            radius: [30, '80%']
+          },
+          angleAxis: {
+            max: max_top[0],
+            startAngle: 75
+          },
+          radiusAxis: {
+            type: 'category',
+            data: radiusAxis
+          },
+          tooltip: {},
+          series: {
+            type: 'bar',
+            data: series,
+            coordinateSystem: 'polar',
+            label: {
+              position: 'middle',
+              formatter: '{b}: {c}'
+            }
+          }
+        };
+
+        option && myChart1.setOption(option);
+        myChart1.on('click', function (params) {
+                window.location.href = "/jobdetail?jobID=" + params.data.jobID;
+            });
+
+    },
+    error: function (xhr) {
+
+    }
+
+
+})
+</script>
 </body>
 
 </html>

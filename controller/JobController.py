@@ -1,7 +1,8 @@
+import operator
+
 from flask import render_template, redirect, request, sessions, Blueprint
 import json
 from service.JobService import JobService
-import os
 from service.UserService import UserService
 
 jobController = Blueprint("jobController", __name__)
@@ -37,17 +38,6 @@ def getJobHLSalaryByJobCity():
     data = jobService.getJobHLSalaryByJobType()
     return json.dumps(data, ensure_ascii=False)
     pass
-
-
-@jobController.route('/getjobcountbysalary', methods=['get', 'post'])
-def getJobCountByJobSalary():
-    jobService = JobService()
-    data = []
-    data.append(jobService.getJobCountByJobSalary(0, 15000))
-    data.append(jobService.getJobCountByJobSalary(15000, 30000))
-    data.append(jobService.getJobCountByJobSalary(30000, 1000000))
-
-    return json.dumps(data, ensure_ascii=False)
 
 
 @jobController.route('/joblist', methods=['post', 'get'])
@@ -231,16 +221,20 @@ def getJobDetail():
     jobId = request.args.get("jobID")
     jobService = JobService()
     job, sjobList = jobService.getJobDetails(jobId)
+    simial = jobService.get_similar_by_id(jobId)
     job_list = list()
+    i = 0
     for jobs in sjobList:
         temp = dict()
         temp["jobCompany"] = jobs["jobCompany"]
         char = int(jobs["jobLowSalary"]) / 1000
         temp["jobLowSalary"] = char
-        temp["jobID"]=jobs["jobID"]
+        temp["jobID"] = jobs["jobID"]
+        temp["similar"] = simial[i]["similar"]
         job_list.append(temp)
-
-    filename = './static/assets/js/job_similar.json'
+        i += 1
+    filename = './/static/assets/js/job_similar.json'
+    job_list = sorted(job_list, key=operator.itemgetter("jobLowSalary"))
     jsonfile = open(filename, 'w', encoding='utf-8')
     json.dump(job_list, jsonfile, ensure_ascii=False, indent=4)
     return render_template("jobdetail.html", job=job, sjobList=sjobList)

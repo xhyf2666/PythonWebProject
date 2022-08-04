@@ -164,3 +164,11 @@ class JobService():
             jobDao.close()
 
         return type, city
+
+    def get_similar_by_id(self, job_id):
+        jobDao = JobDao()
+        try:
+            data = jobDao.get_similar_by_id(job_id)
+        finally:
+            jobDao.close()
+        return data

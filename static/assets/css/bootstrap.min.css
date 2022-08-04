@@ -1590,6 +1590,13 @@ pre code {
         max-width: 100%
     }
 
+    .col-lg-50 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 50%
+    }
+
     .order-lg-first {
         -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
