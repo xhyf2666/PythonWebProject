@@ -9,10 +9,12 @@ from service.UserService import UserService
 
 jobController = Blueprint("jobController", __name__)
 
+
 @jobController.before_request
 def before():
     if session.get('user') is None:
         return render_template('index.html')
+
 
 @jobController.route('/getjobsalarybytype', methods=['get', 'post'])
 def getJobSalaryByJobType():
